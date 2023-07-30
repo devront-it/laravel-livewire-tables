@@ -12,7 +12,7 @@
         wire:loading.class.delay="opacity-50 dark:bg-gray-900 dark:opacity-60"
 
         @if ($component->reorderIsEnabled() && $component->currentlyReorderingIsEnabled())
-            wire:sortable.item="{{ $row->getKey() }}"
+        wire:sortable.item="{{ $row->getKey() }}"
         @endif
 
         {{
@@ -27,10 +27,8 @@
     </tr>
 @elseif ($theme === 'bootstrap-4' || $theme === 'bootstrap-5')
     <tr
-        wire:loading.class.delay=""
-
         @if ($component->reorderIsEnabled() && $component->currentlyReorderingIsEnabled())
-            wire:sortable.item="{{ $row->getKey() }}"
+        wire:sortable.item="{{ $row->getKey() }}"
         @endif
 
         {{
