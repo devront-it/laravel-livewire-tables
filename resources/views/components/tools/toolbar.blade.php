@@ -247,7 +247,7 @@
 
             @if ($component->paginationIsEnabled() && $component->perPageVisibilityIsEnabled())
                 <div>
-                    <select wire:model.live"perPage" id="perPage"
+                    <select wire:model.live="perPage" id="perPage"
                         class="block w-full border-gray-300 rounded-md shadow-sm transition duration-150 ease-in-out sm:text-sm sm:leading-5 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white dark:border-gray-600">
                         @foreach ($component->getPerPageAccepted() as $item)
                             <option value="{{ $item }}"
@@ -465,7 +465,7 @@
                                         wire:key="columnSelect-{{ $loop->index }}-{{ $component->getTableName() }}">
                                         <label wire:loading.attr="disabled" wire:target="selectedColumns"
                                             class="px-2 {{ $loop->last ? 'mb-0' : 'mb-1' }}">
-                                            <input wire:model.live"selectedColumns" wire:target="selectedColumns"
+                                            <input wire:model.live="selectedColumns" wire:target="selectedColumns"
                                                 wire:loading.attr="disabled" type="checkbox"
                                                 value="{{ $column->getSlug() }}" />
                                             <span class="ml-2">{{ $column->getTitle() }}</span>
@@ -480,7 +480,7 @@
 
             @if ($component->paginationIsEnabled() && $component->perPageVisibilityIsEnabled())
                 <div class="ml-0 ml-md-2">
-                    <select wire:model.live"perPage" id="perPage" class="form-control">
+                    <select wire:model.live="perPage" id="perPage" class="form-control">
                         @foreach ($component->getPerPageAccepted() as $item)
                             <option value="{{ $item }}"
                                 wire:key="per-page-{{ $item }}-{{ $component->getTableName() }}">
@@ -687,7 +687,7 @@
                                 @if ($column->isVisible() && $column->isSelectable())
                                     <div wire:key="columnSelect-{{ $loop->index }}-{{ $component->getTableName() }}"
                                         class="form-check ms-2">
-                                        <input wire:model.live"selectedColumns" wire:target="selectedColumns"
+                                        <input wire:model.live="selectedColumns" wire:target="selectedColumns"
                                             wire:loading.attr="disabled" type="checkbox" class="form-check-input"
                                             value="{{ $column->getSlug() }}" />
                                         <label wire:loading.attr="disabled" wire:target="selectedColumns"
@@ -704,7 +704,7 @@
 
             @if ($component->paginationIsEnabled() && $component->perPageVisibilityIsEnabled())
                 <div class="ms-0 ms-md-2">
-                    <select wire:model.live"perPage" id="perPage" class="form-select">
+                    <select wire:model.live="perPage" id="perPage" class="form-select">
                         @foreach ($component->getPerPageAccepted() as $item)
                             <option value="{{ $item }}"
                                 wire:key="per-page-{{ $item }}-{{ $component->getTableName() }}">
