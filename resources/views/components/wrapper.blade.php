@@ -11,7 +11,7 @@
     paginationTotalItemCount: $wire.entangle('paginationTotalItemCount'),
     paginationCurrentItems: $wire.entangle('paginationCurrentItems'),
     alwaysShowBulkActions: {{ $component->getHideBulkActionsWhenEmptyStatus() ? 'false' : 'true' }},
-    selectedItems: $wire.entangle('selected').defer,
+    selectedItems: $wire.entangle('selected'),
     @if ($component->showBulkActionsDropdownAlpine())
     toggleSelectAll() {
         if (this.paginationTotalItemCount == this.selectedItems.length) {

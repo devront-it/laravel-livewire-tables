@@ -79,13 +79,13 @@ trait SearchHelpers
         }
 
         if ($this->hasSearchDefer()) {
-            return '.defer';
+            return '';
         }
 
         if ($this->hasSearchLazy()) {
-            return '.lazy';
+            return '.blur';
         }
 
-        return '';
+        return '.live';
     }
 }
