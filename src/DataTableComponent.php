@@ -47,6 +47,8 @@ abstract class DataTableComponent extends Component
         'clearFilters' => 'clearFilterEvent',
     ];
 
+    public $numberOfPaginatorsRendered = [];
+
     /**
      * returns a unique id for the table, used as an alias to identify one table from another session and query string to prevent conflicts
      */
