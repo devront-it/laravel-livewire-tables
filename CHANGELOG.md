@@ -2,7 +2,73 @@
 
 All notable changes to `laravel-livewire-tables` will be documented in this file
 
-## [Unreleased]
+## [Unreleased] - 3.x - Beta Fixes (beta-1)
+- Removal of setSearchLazy
+- Fix for setSearchDebounce
+- Add setSearchBlur()
+- Add setSearchThrottle()
+- Fix publishing of views
+- Add publish translations
+- Add prependColumns() and appendColumns() functions
+
+## [Unreleased] - 3.x (beta-0)
+- Requirements Change
+    - Requires LiveWire 3.x
+    - Requires PHP 8.1+
+    - Requires Laravel 10+
+
+
+- Core Changes
+    - Move sorts, search, selectedColumns out of the traditional __$this->{$this->getTableName()}['sorts']__ and instead place it directly within the component.  This:
+        - Improves the query string behaviour
+        - Reduces the need to repeatedly set up that main array
+        [Commit 1 Here](https://github.com/LowerRockLabs/laravel-livewire-tables-v3/commit/d7ccabfc8adefeb4bddcbac64831ef1a688527a8)
+        [Commit 2 Here](https://github.com/LowerRockLabs/laravel-livewire-tables-v3/commit/0d8d98546b6a8051c4197804cc33b515faa02b07)
+
+    - Tidying
+        - Removed Spatie Package Tools and replaced with a generic service provider
+        - Significant reduction in blade/view sizes, and repetition of code across Tailwind/Bootstrap 4/Bootstrap 5 themes
+        - Uses HeroIcons instead of hard-coded SVGs for icons
+        - Several variables are now inherited instead of being passed (e.g. Table Name)
+        - Change to how Filters are rendered (no longer receives $component)
+        - Wire keys and IDs now all conform to a format
+
+    - Features
+        - General
+            - Added support for cursor pagination
+            - Cursor & Simple pagination both include a "Total Item Count" stored in $paginationTotalItemCount
+            - Added support for multiple relations on a single table (e.g. user has a "mother user" and a "father user")
+            - Replaced dependency on unsupported Sortable JS libraries.
+            - Option for a Search Placeholder to be set
+            - Bootstrap striping is now fully working
+
+        - Filters
+            - Filter Construct calls config([]) by default to set configuration defaults, to avoid errors
+            - Added Numeric Range filter
+            - Added Date Range filter
+            - DateFilter & DateTimeFilter have customisable Pills Date Format
+            - DateFilter & DateTimeFilter fully support setFilterDefaultValue
+            - MultiSelectFilter & MultiSelectDropdownFilter both support setFirstOption()
+            - There are now two arrays relating to Filters:
+                - A wireable one ($filterComponents)
+                - An unwired one - only keeps track of those filters that have a value ($appliedFilters).  This is what is bound to the query string, and populates the filters on mount if they are present in the query string.
+        
+        - Livewire 3 Specific
+            - Migrated any $component->id reference to $component->getId()
+            - Added SetSearchLive to allow for the search to be "live", with tests
+            - Added capability for external CSS file
+            - Custom CSS/JS and Alpine components are now stored in an external file, which has configurable injection options
+            - Added setSearchLive(), setSearchThrottle(int $milliseconds) and setSearchBlur() options for Search behaviour
+
+- Test Changes
+    - Temporarily removed the sort_events_apply_correctly and filter_events_apply_correctly due to LW3 not using Emit anymore.
+
+    - Added extra column to the PetsTable -> last_visit and associated test changes to make the counts work.  This column is deselected() by default to allow for testing on those methods.
+
+- Doc Changes
+    - Slowly begun updating the docs with the relevant new features, dependencies etc.
+
+
 
 ## [2.15.0] - 2023-07-15
 
